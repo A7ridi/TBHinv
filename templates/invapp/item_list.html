@@ -1,0 +1,147 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>TBH Inventory</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/navbar-fixed/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static '../static/css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+   
+    <!-- Custom CSS -->
+    <link href="{% static '../static/css/style.css' %}" rel="stylesheet">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      
+      /*Align the title to the center of the page*/
+      .title{
+        text-align: center;
+      }
+      
+      /*Color, align and shadow the table*/
+      table{
+        width: 100%;
+        text-align: center;
+        font-size: 15px;
+      }
+      
+      /*Make alternating colors for the table rows*/
+      table tr:nth-child(odd){
+        background: #B8CAE4
+      }
+        
+      table tr:nth-child(even){
+        background: #dae5f4
+      }
+
+      .success{
+        list-style: none;
+        background-color: #2e6da4;
+        color: white;
+        /*box-shadow: 3px 3px 22px 8px #4c5c6d; */
+        -webkit-box-shadow: 9px 9px 21px -4px rgba(145,145,145,0.61);
+        -moz-box-shadow: 9px 9px 21px -4px rgba(145,145,145,0.61);
+        box-shadow: 9px 9px 21px -4px rgba(145,145,145,0.61);
+        text-align: center;
+      }
+
+      .flt-search #div_id_item, 
+      .flt-search #div_id_location{
+      width: 250px;
+      float: left;
+      margin-right: 20px;
+      }
+
+      .btn-primary{
+        margin: 0;
+        position: absolute;
+        bottom: 61.5%;
+        right: 43%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{% static '../static/css/navbar-top-fixed.css' %}" rel="stylesheet">
+</head>
+<body>   
+    {% include 'navbar.html' %}    
+    <main role="main" class="container">
+        <div class="jumbotron">
+          {% if messages %}
+            <ul class="messages">
+               {% for message in messages %}
+                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+               {% endfor %}
+            </ul>
+          {% endif %}      
+          <h1 class="title">{{title}}</h1>
+          <div class="flt-search">
+            <form method="post" action="">
+               {% csrf_token %}
+               {{form|crispy}}
+               <input class="btn btn-primary search-btn" type="submit" value="Search" />
+            </form>
+          </div>
+            <table>
+                <tr>
+                    <th width="30" height="35">#</th>
+                    <th>Item</th>
+                    <th>Amount</th>
+                    <th>Expected Need In</th>
+                    <th>Location</th>
+                    <th>Purchase Date</th>
+                    <th>Delete Item</th>
+                </tr>
+                {% for instance in queryset %}
+                <tr>
+                    <td width="30" height="35">{{forloop.counter}}</td>
+                    <td><a href="{% url 'list_edit' id=instance.id %}" data-toggle="tooltip" title="edit this item"> {{instance.item}}</td>
+                    <td>{{instance.amount}}</td>
+                    <td>{{instance.expected_need_in}}</td>
+                    <td>{{instance.location}}</td>
+                    <td>{{instance.issue_date}}</td>
+                    <td><a href="{% url 'item_delete' id=instance.id %}" data-toggle="tooltip" title="delete this item"><img src="{% static '../static/img/del.png' %}"></a></td>    
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </main>
+
+    <!-- JS Files -->
+    <script src="{% static '../static/js/jquery-3.4.1.slim.min.js' %}" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="{% static "../static/js/vendor/jquery.slim.min.js" %}"><\/script>')</script><script src="{% static '../static/js/bootstrap.bundle.min.js' %}" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script></body>
+</html>
