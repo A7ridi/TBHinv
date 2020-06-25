@@ -29,10 +29,11 @@ class StorageHistory(models.Model):
      issue_date = models.DateField('Purchase date(dd/mm/yy)', auto_now_add=False, auto_now=False, blank=True, null=True)
      timestamp = models.DateField(auto_now_add=True, auto_now=False, blank=True, null=True)
 
-# Username/Mysql User - InventoryTbh
-# Password - TBHInventory@2018
+# Username/Mysql User/Postgres user - InventoryTbh
+# Password/Putty pass/Postgres pass - TBHInventory@2018
 # Email    - thebiryanihotspot@gmail.com
 # DO Pass  - WnN!H6LgWCCg5D
 # MySQL Pass - WnN!H6LgWCCg5D
 # MySQL db - Inventorydb
-
+# User Putty/DO - djangoadmin
+# Postgres DBname - inv_prod
