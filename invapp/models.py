@@ -37,3 +37,4 @@ class StorageHistory(models.Model):
 # MySQL db - Inventorydb
 # User Putty/DO - djangoadmin
 # Postgres DBname - inv_prod
+# ssh key/putty - ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA5mRDssdyOQQ+af3SNxw1kVdH5iOopsveuSMo3vdbg6qVCxjFkJItdzuUsPl3Jy5ngGyEbluFhsOmyE+aPrmd9U2lFI+F1VHCczPi+tkM7McKK9GVPn0eM8AE6tXvID+eVvMc5++3Ar8IkV4Dp2+FOYgSkQGkePgzQ5V/a6NA7NngxhPUX/zRRzaz/lquh71Ho6G3K/MNKREcgaRuOnQ9a3eVp0Qn1KRO0VREVwiWgsctFLF9LP6fITapw2vvPj1wppVuwbu+JISYH+k5tynI6DC1ea9g6/njMKnWWFt0MA+bj2hV+Un/E0IPk1Wvoj6qzbnJFAhe4/BsOAWy1ZGcgw== rsa-key-20200626
