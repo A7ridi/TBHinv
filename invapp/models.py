@@ -26,11 +26,11 @@ class StorageHistory(models.Model):
      expected_need_in = models.IntegerField()
      choices_field = models.ForeignKey(Item_choices, on_delete=models.DO_NOTHING, blank=True, null=True)
      location = models.CharField(max_length=30, blank=True, null=True)
-     issue_date = models.DateField('Purchase date(dd/mm/yy)', auto_now_add=False, auto_now=False, blank=True, null=True)
+     issue_date = models.DateField('Purchase date(mm/dd/yy)', auto_now_add=False, auto_now=False, blank=True, null=True)
      timestamp = models.DateField(auto_now_add=True, auto_now=False, blank=True, null=True)
 
 # Username/Mysql User/Postgres user server putty - InventoryTbh
-# Password/Putty pass/Postgres pass server putty - TBHInventory@2018
+# Password/Putty pass/Postgres pass server putty/Ddjangoadmin pass - TBHInventory@2018
 # Email    - thebiryanihotspot@gmail.com
 # DO Pass  - WnN!H6LgWCCg5D
 # MySQL Pass - WnN!H6LgWCCg5D

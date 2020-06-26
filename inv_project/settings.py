@@ -72,7 +72,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'tbhinventorydb',
         'USER': 'postgres',
-        'PASSWORD': 'OPENthewindow@007',
+        'PASSWORD': 'TBHInventory@2018',
         'HOST' : 'localhost',
     }
 }
