@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     'invapp.apps.InvappConfig',
     'crispy_forms',
     'django.contrib.sites',
-    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
